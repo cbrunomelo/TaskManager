@@ -1,6 +1,9 @@
-﻿Namespace TaskManager.Services.Entitys
+﻿Imports TaskManager.TaskManager.Services.Entitys.Enums
 
-    Public Class Task
+Namespace TaskManager.Services.Entitys
+
+    Public NotInheritable Class Task
+        Inherits Entity
 
         ReadOnly Property Id As Integer?
 
@@ -14,12 +17,18 @@
 
         ReadOnly Property Status As EStatus
 
-        Sub New(title As String, dueDate As DateTime)
+        Property UserId As Integer?
+        ReadOnly Property User As User
+
+
+
+        Sub New(title As String, dueDate As DateTime, userId As Integer)
             Me.Title = title
             Me.Created = DateTime.Now
             Me.LastUpdate = DateTime.Now
             Me.Status = EStatus.Pending
             Me.DueDate = dueDate
+            Me.UserId = userId
 
         End Sub
     End Class

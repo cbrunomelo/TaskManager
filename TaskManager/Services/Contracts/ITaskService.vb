@@ -3,7 +3,7 @@
 Namespace TaskManager.Services.Contracts
     Public Interface ITaskService
 
-        Function CreateTask(title As String, dueDate As DateTime) As Boolean
+        Function CreateTask(title As String, dueDate As DateTime, userId As Int32) As Boolean
 
         Function UpdateTask(id As Integer, title As String, dueDate As DateTime, status As EStatus) As Boolean
 
@@ -11,7 +11,7 @@ Namespace TaskManager.Services.Contracts
 
         Function GetTask(id As Integer) As Task
 
-        Function GetTasks() As List(Of Task)
+        Function GetTasks() As IEnumerable
 
 
 

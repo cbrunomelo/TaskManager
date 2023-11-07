@@ -1,6 +1,7 @@
 ﻿Namespace TaskManager.Services.Entitys
 
-    Public Class User
+    Public NotInheritable Class User
+        Inherits Entity
 
         ReadOnly Property Name As String
 
