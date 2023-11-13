@@ -3,9 +3,8 @@
 Namespace TaskManager.Repository.DALFactory
     Public Class DALFactory
 
-        Public Shared Function CriarComando(tipoAcesso As ETipoAcesso, comandoTexto As String, comandoTipo As CommandType, listaParametros As List(Of DbParameter)) As DbCommand
+        Public Shared Function CriarComando(comandoTexto As String, comandoTipo As CommandType, listaParametros As List(Of DbParameter)) As DbCommand
 
-            ConexaoDB.getAcesso(tipoAcesso)
             Try
                 Dim oFactory = DbProviderFactories.GetFactory(ConexaoDB.ProviderName)
                 Dim oConn = oFactory.CreateConnection
@@ -45,17 +44,10 @@ Namespace TaskManager.Repository.DALFactory
             End Try
         End Function
 
-        Public Enum TipoDeComando
-                ExecuteNonQuery
-                ExecuteReader
-                ExecuteScalar
-                ExecuteDataTable
-                ExecuteDataSet
-            End Enum
 
-        Public Shared Function ExecutarComando(tipoAcesso As String, comandoTexto As String, comandoTipo As CommandType, listaParametros As List(Of DbParameter), tipoComando As TipoDeComando) As Object
+        Public Shared Function ExecutarComando(comandoTexto As String, comandoTipo As CommandType, listaParametros As List(Of DbParameter), tipoComando As TipoDeComando) As Object
 
-            Dim command = CriarComando(tipoAcesso, comandoTexto, comandoTipo, listaParametros)
+            Dim command = CriarComando(comandoTexto, comandoTipo, listaParametros)
             Dim retorno As Object = Nothing
 
             Try

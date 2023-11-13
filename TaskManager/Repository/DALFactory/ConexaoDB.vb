@@ -9,9 +9,6 @@ Namespace TaskManager.Repository.DALFactory
         Shared _connectionString As String
         Shared _providerName As String
 
-        Private _conexoesComBanco As Dictionary(Of ETipoAcesso, ConexaoDB)
-
-
         Public Shared Sub getAcesso(ByVal tipoAcesso As ETipoAcesso)
 
             Try
@@ -40,7 +37,7 @@ Namespace TaskManager.Repository.DALFactory
         End Function
 
 
-        Public Shared Function ConnectionStringSQLite() As String
+        Private Shared Function ConnectionStringSQLite() As String
             Dim diretorioSolucao As String = Path.GetDirectoryName(Path.GetDirectoryName(Application.StartupPath))
             Dim diretorioDoSQlite As String = "\Repository"
             Return "Data Source=" & diretorioSolucao & diretorioDoSQlite & "\app.db;Version=3;"

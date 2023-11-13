@@ -6,4 +6,11 @@ Public Class Form1
         taskService.CreateTask("Teste", DateTime.Now, 24)
 
     End Sub
+
+    Private Sub btnCreateUser_Click(sender As Object, e As EventArgs) Handles btnCreateUser.Click
+        Dim userService As UserService = New UserService()
+        userService.CreateUser("Batman", "senha")
+
+
+    End Sub
 End Class

@@ -119,14 +119,17 @@
     <Compile Include="Repository\DALFactory\ConexaoDB.vb" />
     <Compile Include="Repository\DALFactory\DALFactory.vb" />
     <Compile Include="Repository\DALFactory\ETipoAcesso.vb" />
+    <Compile Include="Repository\DALFactory\ETIpoDeComando.vb" />
     <Compile Include="Repository\TaskRepository.vb" />
     <Compile Include="Repository\UserRepository.vb" />
     <Compile Include="Services\Contracts\ITaskService.vb" />
+    <Compile Include="Services\Contracts\IUserService.vb" />
     <Compile Include="Services\Entitys\Entity.vb" />
     <Compile Include="Services\Entitys\Enums\EStatus.vb" />
     <Compile Include="Services\Entitys\Task.vb" />
     <Compile Include="Services\Entitys\User.vb" />
     <Compile Include="Services\TaskService.vb" />
+    <Compile Include="Services\UserService.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\Form1.resx">

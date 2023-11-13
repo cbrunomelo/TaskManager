@@ -7,10 +7,11 @@ Namespace TaskManager.Repository
     Public Class TaskRepository
         Implements IRepository(Of TaskManager.Services.Entitys.Task)
 
-        Public Sub Add(entity As Task) Implements IRepository(Of Task).Add
-
+        Sub New()
             ConexaoDB.getAcesso(ETipoAcesso.SQLite)
+        End Sub
 
+        Public Sub Add(entity As Task) Implements IRepository(Of Task).Add
 
             Dim comando As String = "INSERT INTO Tasks (TITLE, CREATED, LASTUPDATE, DUEDATE, STATUS, USERID) VALUES (@VAL1, @VAL2, @VAL3, @VAL4, @VAL5, @VAL6)"
             Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
@@ -21,7 +22,7 @@ Namespace TaskManager.Repository
             paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL5", DbType.String, entity.Status.ToString))
             paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL6", DbType.Int32, entity.UserId))
 
-            DALFactory.DALFactory.ExecutarComando(ETipoAcesso.SQLite, comando, CommandType.Text, paramtros, DALFactory.DALFactory.TipoDeComando.ExecuteNonQuery)
+            DALFactory.DALFactory.ExecutarComando(comando, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
 
 
 
