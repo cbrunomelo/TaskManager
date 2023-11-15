@@ -1,11 +1,12 @@
-﻿Imports TaskManager.TaskManager.Services.Entitys.Enums
+﻿Imports TaskManager.TaskManager.Services.DTOs
+Imports TaskManager.TaskManager.Services.Entitys.Enums
 
 Namespace TaskManager.Services.Contracts
     Public Interface ITaskService
 
         Function CreateTask(title As String, dueDate As DateTime, userId As Int32) As Boolean
 
-        Function UpdateTask(id As Integer, title As String, dueDate As DateTime, status As EStatus) As Boolean
+        Function UpdateTask(taskDTO As TaskDTO) As Boolean
 
         Function DeleteTask(id As Integer) As Boolean
 

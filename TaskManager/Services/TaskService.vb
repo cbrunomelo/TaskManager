@@ -2,6 +2,7 @@
 Imports TaskManager.TaskManager.Services.Contracts
 Imports TaskManager.TaskManager.Services.Entitys.Enums
 Imports TaskManager.TaskManager.Repository
+Imports TaskManager.TaskManager.Services.DTOs
 
 Namespace TaskManager.Services
     Public Class TaskService
@@ -20,7 +21,7 @@ Namespace TaskManager.Services
 
         End Function
 
-        Public Function UpdateTask(id As Integer, title As String, dueDate As Date, status As EStatus) As Boolean Implements ITaskService.UpdateTask
+        Public Function UpdateTask(taskDTO As TaskDTO) As Boolean Implements ITaskService.UpdateTask
             Throw New NotImplementedException()
         End Function
 
