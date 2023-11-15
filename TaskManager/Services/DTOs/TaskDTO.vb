@@ -6,9 +6,9 @@ Namespace TaskManager.Services.DTOs
 
         Public Property Title As String
 
-        Public Property DueDate As DateTime
+        Public Property DueDate As DateTime?
 
-        Public Property Status As EStatus
+        Public Property Status As EStatus?
 
         Public Property Id As Integer
 

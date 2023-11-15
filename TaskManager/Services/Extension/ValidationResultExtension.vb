@@ -4,7 +4,7 @@ Imports System.Runtime.CompilerServices
 Module ValidationResultExtension
 
     <Extension()>
-    Public Function ToListErros(Of T)(validationResult As ValidationResult) As List(Of String)
+    Public Function ToListErros(validationResult As ValidationResult) As List(Of String)
 
         Dim list As List(Of String) = New List(Of String)()
 

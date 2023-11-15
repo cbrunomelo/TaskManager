@@ -23,14 +23,22 @@ Namespace TaskManager.Services
         End Function
 
         Public Function UpdateTask(taskDTO As TaskDTO) As ResultViewModel(Of TaskDTO) Implements ITaskService.UpdateTask
+
             Dim taskValidator As TaskValidator = New TaskValidator()
             Dim result = taskValidator.Validate(taskDTO)
             If Not result.IsValid Then
-                Return New ResultViewModel(result.ToListErros())
+                Return New ResultViewModel(Of TaskDTO)(result.ToListErros())
+
             End If
 
-            Dim task As Entitys.Task = New Entitys.Task(taskDTO.Title, taskDTO.DueDate, taskDTO.UserId)
-            task.Id = taskDTO.Id
+            Dim task As Entitys.Task = _repository.GetById(taskDTO.Id)
+
+
+            task.Update(taskDTO.Title, taskDTO.DueDate, taskDTO.Status)
+            If task.IsValid = False Then
+                Return New ResultViewModel(Of TaskDTO)(task.ErrorList)
+            End If
+
             _repository.Update(task)
         End Function
 
