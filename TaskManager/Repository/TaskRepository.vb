@@ -29,7 +29,15 @@ Namespace TaskManager.Repository
         End Sub
 
         Public Sub Update(entity As Task) Implements IRepository(Of Task).Update
-            Throw New NotImplementedException()
+            Dim comand As String = "UPDATE Tasks SET TITLE = @VAL1, LASTUPDATE = @VAL2, DUEDATE = @VAL3, STATUS = @VAL4 WHERE ID = @VAL5"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.String, entity.Title))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL2", DbType.DateTime2, entity.LastUpdate))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL3", DbType.DateTime2, entity.DueDate))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL4", DbType.String, entity.Status.ToString))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL5", DbType.Int32, entity.Id))
+
+            DALFactory.DALFactory.ExecutarComando(comand, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
         End Sub
 
         Public Sub Delete(entity As Task) Implements IRepository(Of Task).Delete
