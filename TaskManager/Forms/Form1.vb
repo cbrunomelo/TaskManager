@@ -17,9 +17,17 @@ Public Class Form1
     End Sub
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
+
         Dim taskService As TaskService = New TaskService()
         Dim taskDTO As TaskDTO = New TaskDTO(1, "TesteUpdate", DateTime.Now, EStatus.Done, 1)
-        taskService.UpdateTask(taskDTO)
+
+        Dim result = taskService.UpdateTask(taskDTO)
+
+        If result.Success Then
+            MessageBox.Show("Tarefa atualizada com sucesso")
+        Else
+            MessageBox.Show(result.Erros(0))
+        End If
 
     End Sub
 End Class

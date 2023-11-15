@@ -40,6 +40,8 @@ Namespace TaskManager.Services
             End If
 
             _repository.Update(task)
+
+            Return New ResultViewModel(Of TaskDTO)(New TaskDTO(task.UserId, task.Title, task.DueDate, task.Status, task.Id))
         End Function
 
         Public Function DeleteTask(id As Integer) As ResultViewModel(Of TaskDTO) Implements ITaskService.DeleteTask
