@@ -49,7 +49,19 @@ Namespace TaskManager.Repository
         End Function
 
         Public Function GetById(id As Integer) As Task Implements IRepository(Of Task).GetById
-            Throw New NotImplementedException()
+            Dim comando As String = "SELECT * FROM Tasks WHERE ID = @VAL1"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.Int32, id))
+            Dim reader = DALFactory.DALFactory.ExecutarComando(comando, CommandType.Text, paramtros, TipoDeComando.ExecuteReader)
+
+            While reader.Read
+
+                Return New Task(reader("ID"), reader("Title"), reader("Created"), reader("LastUpdate"), reader("DueDate"),
+                                reader("Status"), reader("UserId"))
+
+            End While
+
+
         End Function
     End Class
 End Namespace

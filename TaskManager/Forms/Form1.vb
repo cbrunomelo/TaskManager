@@ -18,7 +18,7 @@ Public Class Form1
 
     Private Sub btnUpdate_Click(sender As Object, e As EventArgs) Handles btnUpdate.Click
         Dim taskService As TaskService = New TaskService()
-        Dim taskDTO As TaskDTO = New TaskDTO(1, "TesteUpdate", DateTime.Now, EStatus.Done)
+        Dim taskDTO As TaskDTO = New TaskDTO(1, "TesteUpdate", DateTime.Now, EStatus.Done, 1)
         taskService.UpdateTask(taskDTO)
 
     End Sub

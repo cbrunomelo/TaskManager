@@ -104,6 +104,20 @@ Namespace TaskManager.Services.Entitys
 
         End Sub
 
+        Sub New(id As Integer, title As String, created As DateTime, lastUpdate As DateTime, dueDate As DateTime, status As String, userId As Integer)
+
+            Me.Id = id
+            Me.Title = title
+            Me.Created = created
+            Me.LastUpdate = lastUpdate
+            [Enum].TryParse(status, Me._Status)
+            Me.DueDate = dueDate
+            Me.UserId = userId
+
+        End Sub
+
+
+
 
         Public Sub Update(title As String, dueDate As DateTime?, status As EStatus?)
 

@@ -2,6 +2,7 @@
 
 Namespace TaskManager.Services.DTOs
     Public Class TaskDTO
+
         Public Property UserId As Integer
 
         Public Property Title As String
@@ -12,12 +13,13 @@ Namespace TaskManager.Services.DTOs
 
         Public Property Id As Integer
 
-        Sub New(userId As Integer, title As String, dueDate As DateTime, status As EStatus)
+        Sub New(userId As Integer, title As String, dueDate As DateTime, status As EStatus, id As Integer)
 
             Me.UserId = userId
             Me.Title = title
             Me.DueDate = dueDate
             Me.Status = status
+            Me.Id = id
 
         End Sub
 
