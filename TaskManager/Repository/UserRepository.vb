@@ -29,11 +29,11 @@ Namespace TaskManager.Repository
             Throw New NotImplementedException()
         End Sub
 
-        Public Sub Delete(entity As Entitys.User) Implements IRepository(Of Entitys.User).Delete
+        Public Function Delete(id As Integer) As Boolean Implements IRepository(Of Entitys.User).Delete
             Throw New NotImplementedException()
-        End Sub
+        End Function
 
-        Public Function GetAll() As IEnumerable(Of Entitys.User) Implements IRepository(Of Entitys.User).GetAll
+        Public Function GetAll(userId As Integer) As IEnumerable(Of Entitys.User) Implements IRepository(Of Entitys.User).GetAll
             Throw New NotImplementedException()
         End Function
 

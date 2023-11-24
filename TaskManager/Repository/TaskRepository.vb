@@ -29,19 +29,61 @@ Namespace TaskManager.Repository
         End Sub
 
         Public Sub Update(entity As Task) Implements IRepository(Of Task).Update
-            Throw New NotImplementedException()
+            Dim comand As String = "UPDATE Tasks SET TITLE = @VAL1, LASTUPDATE = @VAL2, DUEDATE = @VAL3, STATUS = @VAL4 WHERE ID = @VAL5"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.String, entity.Title))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL2", DbType.DateTime2, entity.LastUpdate))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL3", DbType.DateTime2, entity.DueDate))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL4", DbType.String, entity.Status.ToString))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL5", DbType.Int32, entity.Id))
+
+            DALFactory.DALFactory.ExecutarComando(comand, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
         End Sub
 
-        Public Sub Delete(entity As Task) Implements IRepository(Of Task).Delete
-            Throw New NotImplementedException()
-        End Sub
+        Public Function Delete(id As Integer) As Boolean Implements IRepository(Of Task).Delete
+            Dim comando As String = "DELETE FROM Tasks WHERE ID = @VAL1"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.Int32, id))
+            Dim result = DALFactory.DALFactory.ExecutarComando(comando, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
 
-        Public Function GetAll() As IEnumerable(Of Task) Implements IRepository(Of Task).GetAll
-            Throw New NotImplementedException()
+            Return Integer.Parse(result) > 0
+
+
+        End Function
+
+        Public Function GetAll(userId As Integer) As IEnumerable(Of Task) Implements IRepository(Of Task).GetAll
+            Dim command As String = "SELECT * FROM Tasks WHERE USERID = @VAL1"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.Int32, userId))
+            Dim reader = DALFactory.DALFactory.ExecutarComando(command, CommandType.Text, paramtros, TipoDeComando.ExecuteReader)
+            Dim list As List(Of Task) = New List(Of Task)
+
+
+            While reader.Read()
+                Dim task As Task = New Task(reader("ID"), reader("Title"), reader("Created"), reader("LastUpdate"), reader("DueDate"),
+                                reader("Status"), reader("UserId"))
+                list.Add(task)
+
+            End While
+
+            Return list
         End Function
 
         Public Function GetById(id As Integer) As Task Implements IRepository(Of Task).GetById
-            Throw New NotImplementedException()
+            Dim task As Task = Nothing
+            Dim comando As String = "SELECT * FROM Tasks WHERE ID = @VAL1"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.Int32, id))
+            Dim reader = DALFactory.DALFactory.ExecutarComando(comando, CommandType.Text, paramtros, TipoDeComando.ExecuteReader)
+
+            While reader.Read
+
+                task = New Task(reader("ID"), reader("Title"), reader("Created"), reader("LastUpdate"), reader("DueDate"),
+                                reader("Status"), reader("UserId"))
+
+            End While
+
+            Return task
         End Function
     End Class
 End Namespace

@@ -1,17 +1,18 @@
-﻿Imports TaskManager.TaskManager.Services.Entitys.Enums
+﻿Imports TaskManager.TaskManager.Services.DTOs
+Imports TaskManager.TaskManager.Services.Entitys.Enums
 
 Namespace TaskManager.Services.Contracts
     Public Interface ITaskService
 
-        Function CreateTask(title As String, dueDate As DateTime, userId As Int32) As Boolean
+        Function CreateTask(title As String, dueDate As DateTime, userId As Int32) As ResultViewModel(Of TaskDTO)
 
-        Function UpdateTask(id As Integer, title As String, dueDate As DateTime, status As EStatus) As Boolean
+        Function UpdateTask(taskDTO As TaskDTO) As ResultViewModel(Of TaskDTO)
 
-        Function DeleteTask(id As Integer) As Boolean
+        Function DeleteTask(id As Integer) As ResultViewModel(Of TaskDTO)
 
-        Function GetTask(id As Integer) As Task
+        Function GetTask(id As Integer) As ResultViewModel(Of TaskDTO)
 
-        Function GetTasks() As IEnumerable
+        Function GetTasks(userId As Integer) As ResultViewModel(Of IEnumerable(Of TaskDTO))
 
 
 
