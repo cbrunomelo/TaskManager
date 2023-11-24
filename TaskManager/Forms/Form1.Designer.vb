@@ -25,6 +25,7 @@ Partial Class Form1
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnCreateUser = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
+        Me.btnDelete = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -54,11 +55,21 @@ Partial Class Form1
         Me.btnUpdate.Text = "update"
         Me.btnUpdate.UseVisualStyleBackColor = True
         '
+        'btnDelete
+        '
+        Me.btnDelete.Location = New System.Drawing.Point(357, 291)
+        Me.btnDelete.Name = "btnDelete"
+        Me.btnDelete.Size = New System.Drawing.Size(75, 23)
+        Me.btnDelete.TabIndex = 3
+        Me.btnDelete.Text = "Excluir"
+        Me.btnDelete.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.btnCreateUser)
         Me.Controls.Add(Me.Button1)
@@ -71,4 +82,5 @@ Partial Class Form1
     Friend WithEvents Button1 As Button
     Friend WithEvents btnCreateUser As Button
     Friend WithEvents btnUpdate As Button
+    Friend WithEvents btnDelete As Button
 End Class

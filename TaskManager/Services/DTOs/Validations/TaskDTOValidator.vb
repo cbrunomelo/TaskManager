@@ -1,7 +1,7 @@
 ﻿Imports FluentValidation
 
 Namespace TaskManager.Services.DTOs.Validations
-    Public Class TaskValidator
+    Public Class TaskDTOValidator
         Inherits AbstractValidator(Of TaskDTO)
 
         Public Sub New()

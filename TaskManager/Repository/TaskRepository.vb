@@ -40,9 +40,16 @@ Namespace TaskManager.Repository
             DALFactory.DALFactory.ExecutarComando(comand, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
         End Sub
 
-        Public Sub Delete(entity As Task) Implements IRepository(Of Task).Delete
-            Throw New NotImplementedException()
-        End Sub
+        Public Function Delete(id As Integer) As Boolean Implements IRepository(Of Task).Delete
+            Dim comando As String = "DELETE FROM Tasks WHERE ID = @VAL1"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.Int32, id))
+            Dim result = DALFactory.DALFactory.ExecutarComando(comando, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
+
+            Return Integer.Parse(result) > 0
+
+
+        End Function
 
         Public Function GetAll() As IEnumerable(Of Task) Implements IRepository(Of Task).GetAll
             Throw New NotImplementedException()

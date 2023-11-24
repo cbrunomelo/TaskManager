@@ -24,7 +24,7 @@ Namespace TaskManager.Services
 
         Public Function UpdateTask(taskDTO As TaskDTO) As ResultViewModel(Of TaskDTO) Implements ITaskService.UpdateTask
 
-            Dim taskValidator As TaskValidator = New TaskValidator()
+            Dim taskValidator As TaskDTOValidator = New TaskDTOValidator()
             Dim result = taskValidator.Validate(taskDTO)
             If Not result.IsValid Then
                 Return New ResultViewModel(Of TaskDTO)(result.ToListErros())
@@ -45,7 +45,13 @@ Namespace TaskManager.Services
         End Function
 
         Public Function DeleteTask(id As Integer) As ResultViewModel(Of TaskDTO) Implements ITaskService.DeleteTask
-            Throw New NotImplementedException()
+            Dim result = _repository.Delete(id)
+            If result = False Then
+                Return New ResultViewModel(Of TaskDTO)("Não foi possível excluir a tarefa")
+            End If
+
+            Return New ResultViewModel(Of TaskDTO)(New TaskDTO(0, "", Date.Now, EStatus.Done, 0))
+
         End Function
 
         Public Function GetTask(id As Integer) As ResultViewModel(Of TaskDTO) Implements ITaskService.GetTask

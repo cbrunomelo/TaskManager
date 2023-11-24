@@ -4,7 +4,7 @@
         Function GetById(id As Integer) As T
         Sub Add(entity As T)
         Sub Update(entity As T)
-        Sub Delete(entity As T)
+        Function Delete(id As Integer) As Boolean
     End Interface
 
 

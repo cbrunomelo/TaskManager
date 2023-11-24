@@ -1,6 +1,5 @@
 ﻿Namespace TaskManager.Services.DTOs
     Public Class ResultViewModel(Of T)
-
         Property Success As Boolean
 
         Property Erros As List(Of String) = New List(Of String)()

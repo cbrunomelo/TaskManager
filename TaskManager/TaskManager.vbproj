@@ -135,7 +135,7 @@
     <Compile Include="Services\Contracts\IUserService.vb" />
     <Compile Include="Services\DTOs\ResultViewModel.vb" />
     <Compile Include="Services\DTOs\TaskDTO.vb" />
-    <Compile Include="Services\DTOs\Validations\TaskValidator.vb" />
+    <Compile Include="Services\DTOs\Validations\TaskDTOValidator.vb" />
     <Compile Include="Services\Entitys\Entity.vb" />
     <Compile Include="Services\Entitys\Enums\EStatus.vb" />
     <Compile Include="Services\Entitys\Task.vb" />
