@@ -48,4 +48,15 @@ Public Class Form1
             MessageBox.Show("Tarefa excluída com sucesso")
         End If
     End Sub
+
+    Private Sub btnGetbyId_Click(sender As Object, e As EventArgs) Handles btnGetbyId.Click
+        Dim result = _taskService.GetTask(2)
+
+        If result.Success Then
+            MessageBox.Show(result.Data.Title)
+        Else
+            MessageBox.Show(result.Erros(0))
+        End If
+
+    End Sub
 End Class

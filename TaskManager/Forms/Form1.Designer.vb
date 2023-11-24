@@ -26,6 +26,7 @@ Partial Class Form1
         Me.btnCreateUser = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
+        Me.btnGetbyId = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -64,11 +65,21 @@ Partial Class Form1
         Me.btnDelete.Text = "Excluir"
         Me.btnDelete.UseVisualStyleBackColor = True
         '
+        'btnGetbyId
+        '
+        Me.btnGetbyId.Location = New System.Drawing.Point(394, 111)
+        Me.btnGetbyId.Name = "btnGetbyId"
+        Me.btnGetbyId.Size = New System.Drawing.Size(75, 23)
+        Me.btnGetbyId.TabIndex = 4
+        Me.btnGetbyId.Text = "GetTask1"
+        Me.btnGetbyId.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnGetbyId)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnUpdate)
         Me.Controls.Add(Me.btnCreateUser)
@@ -83,4 +94,5 @@ Partial Class Form1
     Friend WithEvents btnCreateUser As Button
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnDelete As Button
+    Friend WithEvents btnGetbyId As Button
 End Class

@@ -55,7 +55,13 @@ Namespace TaskManager.Services
         End Function
 
         Public Function GetTask(id As Integer) As ResultViewModel(Of TaskDTO) Implements ITaskService.GetTask
-            Throw New NotImplementedException()
+            Dim result = _repository.GetById(id)
+            If result IsNot Nothing Then
+                Return New ResultViewModel(Of TaskDTO)(New TaskDTO(result.UserId, result.Title, result.DueDate, result.Status, result.Id))
+            End If
+
+            Return New ResultViewModel(Of TaskDTO)("Tarefa não encontrada")
+
         End Function
 
         Public Function GetTasks() As ResultViewModel(Of IEnumerable(Of TaskDTO)) Implements ITaskService.GetTasks
