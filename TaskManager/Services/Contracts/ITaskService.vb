@@ -12,7 +12,7 @@ Namespace TaskManager.Services.Contracts
 
         Function GetTask(id As Integer) As ResultViewModel(Of TaskDTO)
 
-        Function GetTasks() As ResultViewModel(Of IEnumerable(Of TaskDTO))
+        Function GetTasks(userId As Integer) As ResultViewModel(Of IEnumerable(Of TaskDTO))
 
 
 

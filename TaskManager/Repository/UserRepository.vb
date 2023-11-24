@@ -33,7 +33,7 @@ Namespace TaskManager.Repository
             Throw New NotImplementedException()
         End Function
 
-        Public Function GetAll() As IEnumerable(Of Entitys.User) Implements IRepository(Of Entitys.User).GetAll
+        Public Function GetAll(userId As Integer) As IEnumerable(Of Entitys.User) Implements IRepository(Of Entitys.User).GetAll
             Throw New NotImplementedException()
         End Function
 

@@ -14,7 +14,7 @@ Public Class Form1
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
 
-        _taskService.CreateTask("Teste", DateTime.Now, 24)
+        _taskService.CreateTask("Teste3", DateTime.Now, 24)
 
     End Sub
 
@@ -57,6 +57,16 @@ Public Class Form1
         Else
             MessageBox.Show(result.Erros(0))
         End If
+
+    End Sub
+
+    Private Sub btnGetAll_Click(sender As Object, e As EventArgs) Handles btnGetAll.Click
+        Dim message As String = ""
+        For Each item In _taskService.GetTasks(24).Data
+            message += item.Title + vbCrLf
+        Next
+
+        MessageBox.Show(message)
 
     End Sub
 End Class

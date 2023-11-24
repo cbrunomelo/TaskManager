@@ -64,8 +64,14 @@ Namespace TaskManager.Services
 
         End Function
 
-        Public Function GetTasks() As ResultViewModel(Of IEnumerable(Of TaskDTO)) Implements ITaskService.GetTasks
-            Throw New NotImplementedException()
+        Public Function GetTasks(userId As Integer) As ResultViewModel(Of IEnumerable(Of TaskDTO)) Implements ITaskService.GetTasks
+            Dim list As List(Of TaskDTO) = New List(Of TaskDTO)
+
+            For Each item In _repository.GetAll(userId)
+                Dim taskDTO As TaskDTO = New TaskDTO(item.UserId, item.Title, item.DueDate, item.Status, item.Id)
+                list.Add(taskDTO)
+            Next
+            Return New ResultViewModel(Of IEnumerable(Of TaskDTO))(list)
         End Function
     End Class
 

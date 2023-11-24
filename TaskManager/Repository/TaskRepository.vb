@@ -51,8 +51,22 @@ Namespace TaskManager.Repository
 
         End Function
 
-        Public Function GetAll() As IEnumerable(Of Task) Implements IRepository(Of Task).GetAll
-            Throw New NotImplementedException()
+        Public Function GetAll(userId As Integer) As IEnumerable(Of Task) Implements IRepository(Of Task).GetAll
+            Dim command As String = "SELECT * FROM Tasks WHERE USERID = @VAL1"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.Int32, userId))
+            Dim reader = DALFactory.DALFactory.ExecutarComando(command, CommandType.Text, paramtros, TipoDeComando.ExecuteReader)
+            Dim list As List(Of Task) = New List(Of Task)
+
+
+            While reader.Read()
+                Dim task As Task = New Task(reader("ID"), reader("Title"), reader("Created"), reader("LastUpdate"), reader("DueDate"),
+                                reader("Status"), reader("UserId"))
+                list.Add(task)
+
+            End While
+
+            Return list
         End Function
 
         Public Function GetById(id As Integer) As Task Implements IRepository(Of Task).GetById

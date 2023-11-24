@@ -27,6 +27,7 @@ Partial Class Form1
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.btnDelete = New System.Windows.Forms.Button()
         Me.btnGetbyId = New System.Windows.Forms.Button()
+        Me.btnGetAll = New System.Windows.Forms.Button()
         Me.SuspendLayout()
         '
         'Button1
@@ -74,11 +75,21 @@ Partial Class Form1
         Me.btnGetbyId.Text = "GetTask1"
         Me.btnGetbyId.UseVisualStyleBackColor = True
         '
+        'btnGetAll
+        '
+        Me.btnGetAll.Location = New System.Drawing.Point(545, 281)
+        Me.btnGetAll.Name = "btnGetAll"
+        Me.btnGetAll.Size = New System.Drawing.Size(75, 23)
+        Me.btnGetAll.TabIndex = 5
+        Me.btnGetAll.Text = "Get all"
+        Me.btnGetAll.UseVisualStyleBackColor = True
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
+        Me.Controls.Add(Me.btnGetAll)
         Me.Controls.Add(Me.btnGetbyId)
         Me.Controls.Add(Me.btnDelete)
         Me.Controls.Add(Me.btnUpdate)
@@ -95,4 +106,5 @@ Partial Class Form1
     Friend WithEvents btnUpdate As Button
     Friend WithEvents btnDelete As Button
     Friend WithEvents btnGetbyId As Button
+    Friend WithEvents btnGetAll As Button
 End Class
