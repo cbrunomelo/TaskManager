@@ -2,6 +2,7 @@
 Imports TaskManager.TaskManager.Repository.Contracts
 Imports TaskManager.TaskManager.Repository.DALFactory
 Imports TaskManager.TaskManager.Services.Contracts
+Imports TaskManager.TaskManager.Services.DTOs
 Imports TaskManager.TaskManager.Services.Entitys
 
 Namespace TaskManager.Services
@@ -17,11 +18,18 @@ Namespace TaskManager.Services
 
 
         End Sub
-        Public Sub CreateUser(name As String, password As String) Implements IUserService.CreateUser
-            Dim user As User = New User(name, password)
-            _repository.Add(user)
+        Public Function CreateUser(userDto As UserDTO) As ResultViewModel(Of UserDTO) Implements IUserService.CreateUser
+            Dim validator = New UserDTOValidator()
+            Dim result = validator.Validate(userDto)
+            If result.IsValid Then
+                Dim user = New User(userDto.Name, userDto.Password)
+                _repository.Add(user)
+                Return New ResultViewModel(Of UserDTO)(userDto)
+            Else
+                Return New ResultViewModel(Of UserDTO)(result.ToListErros)
+            End If
 
-        End Sub
+        End Function
 
         Public Sub UpdateUser(id As Integer, name As String, password As String) Implements IUserService.UpdateUser
             Throw New NotImplementedException()

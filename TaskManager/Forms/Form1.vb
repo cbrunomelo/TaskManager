@@ -4,11 +4,13 @@ Imports TaskManager.TaskManager.Services.Entitys.Enums
 
 Public Class Form1
     Private _taskService As TaskService
+    Private _userService As UserService
     Sub New()
 
         InitializeComponent()
 
         _taskService = New TaskService()
+        _userService = New UserService()
 
 
     End Sub
@@ -19,8 +21,14 @@ Public Class Form1
     End Sub
 
     Private Sub btnCreateUser_Click(sender As Object, e As EventArgs) Handles btnCreateUser.Click
-        Dim userService As UserService = New UserService()
-        userService.CreateUser("Batman", "senha")
+
+        Dim userDTO As UserDTO = New UserDTO("Ba", "senha")
+        Dim result = _userService.CreateUser(userDTO)
+        If result.Success Then
+            MessageBox.Show("Usuário criado com sucesso")
+        Else
+            MessageBox.Show(result.Erros(0))
+        End If
 
 
     End Sub

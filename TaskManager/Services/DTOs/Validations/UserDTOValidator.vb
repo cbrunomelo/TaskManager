@@ -1,4 +1,5 @@
 ﻿Imports FluentValidation
+Imports TaskManager.TaskManager.Services.DTOs
 
 Public Class UserDTOValidator
     Inherits AbstractValidator(Of UserDTO)
@@ -14,7 +15,9 @@ Public Class UserDTOValidator
         RuleFor(Function(x) x.Password).Matches("^[a-zA-Z0-9\s]*$").WithMessage("A senha deve conter apenas letras, números e espaços.").When(Function(x) Not String.IsNullOrEmpty(x.Password))
         RuleFor(Function(x) x.Password).NotEmpty().WithMessage("A senha é obrigatória.")
 
+        'for RepeatPassword
 
+        RuleFor(Function(x) x.RepeatPassword).Equal(Function(x) x.Password).WithMessage("As senhas não conferem.").When(Function(x) Not String.IsNullOrEmpty(x.Password) And Not String.IsNullOrEmpty(x.RepeatPassword))
 
     End Sub
 

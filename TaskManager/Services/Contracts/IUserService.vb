@@ -1,9 +1,10 @@
-﻿Imports TaskManager.TaskManager.Services.Entitys
+﻿Imports TaskManager.TaskManager.Services.DTOs
+Imports TaskManager.TaskManager.Services.Entitys
 
 Namespace TaskManager.Services.Contracts
     Public Interface IUserService
 
-        Sub CreateUser(name As String, password As String)
+        Function CreateUser(userDto As UserDTO) As ResultViewModel(Of UserDTO)
 
         Sub UpdateUser(id As Integer, name As String, password As String)
 
