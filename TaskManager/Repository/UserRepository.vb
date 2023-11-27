@@ -3,12 +3,11 @@ Imports Microsoft.VisualBasic.ApplicationServices
 Imports TaskManager.TaskManager.Repository.Contracts
 Imports TaskManager.TaskManager.Repository.DALFactory
 Imports TaskManager.TaskManager.Services
+Imports TaskManager.TaskManager.TaskManager.Repository.Contracts
 
 Namespace TaskManager.Repository
     Public Class UserRepository
-        Implements IRepository(Of Entitys.User)
-
-
+        Implements IUserrepository
 
         Sub New()
             ConexaoDB.getAcesso(ETipoAcesso.SQLite)
@@ -39,6 +38,20 @@ Namespace TaskManager.Repository
 
         Public Function GetById(id As Integer) As Entitys.User Implements IRepository(Of Entitys.User).GetById
             Throw New NotImplementedException()
+        End Function
+
+        Public Function GetByName(name As String) As Integer? Implements IUserrepository.GetByName
+            Dim command = "Select id from USERS where NAME = @VAL1"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.String, name))
+            Dim result = DALFactory.DALFactory.ExecutarComando(command, CommandType.Text, paramtros, TipoDeComando.ExecuteScalar)
+            If result Is Nothing Then
+                Return Nothing
+            End If
+
+            Return Convert.ToInt32(result)
+
+
         End Function
     End Class
 

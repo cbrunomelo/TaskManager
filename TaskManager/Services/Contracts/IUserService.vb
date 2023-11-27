@@ -6,12 +6,14 @@ Namespace TaskManager.Services.Contracts
 
         Function CreateUser(userDto As UserDTO) As ResultViewModel(Of UserDTO)
 
-        Sub UpdateUser(id As Integer, name As String, password As String)
+        Function UpdateUser(userDTO As UserDTO) As ResultViewModel(Of UserDTO)
 
         Sub DeleteUser(id As Integer)
         Function GetUser(id As Integer) As User
 
         Function GetUsers() As IEnumerable
+
+        Function IsNameInUse(name As String) As Boolean
 
     End Interface
 

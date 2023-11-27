@@ -5,7 +5,7 @@ Imports TaskManager.TaskManager.Repository.DALFactory
 
 Namespace TaskManager.Repository
     Public Class TaskRepository
-        Implements IRepository(Of TaskManager.Services.Entitys.Task)
+        Implements IRepository(Of Task)
 
         Sub New()
             ConexaoDB.getAcesso(ETipoAcesso.SQLite)
