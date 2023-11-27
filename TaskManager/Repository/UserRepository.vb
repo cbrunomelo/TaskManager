@@ -39,7 +39,13 @@ Namespace TaskManager.Repository
         End Function
 
         Public Function Delete(id As Integer) As Boolean Implements IRepository(Of Entitys.User).Delete
-            Throw New NotImplementedException()
+            Dim command As String = "DELETE FROM Users WHERE ID = @VAL1"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.Int32, id))
+            Dim result = DALFactory.DALFactory.ExecutarComando(command, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
+
+            Return Integer.Parse(result) > 0
+
         End Function
 
         Public Function GetAll(userId As Integer) As IEnumerable(Of Entitys.User) Implements IRepository(Of Entitys.User).GetAll

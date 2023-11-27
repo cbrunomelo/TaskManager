@@ -31,6 +31,7 @@ Partial Class Form1
         Me.btnGetAll = New System.Windows.Forms.Button()
         Me.grpTaskService = New System.Windows.Forms.GroupBox()
         Me.grpUserService = New System.Windows.Forms.GroupBox()
+        Me.btnDelete2 = New System.Windows.Forms.Button()
         btnUppdate = New System.Windows.Forms.Button()
         Me.grpTaskService.SuspendLayout()
         Me.grpUserService.SuspendLayout()
@@ -106,6 +107,7 @@ Partial Class Form1
         '
         'grpUserService
         '
+        Me.grpUserService.Controls.Add(Me.btnDelete2)
         Me.grpUserService.Controls.Add(btnUppdate)
         Me.grpUserService.Controls.Add(Me.btnCreateUser)
         Me.grpUserService.Location = New System.Drawing.Point(164, 60)
@@ -124,6 +126,15 @@ Partial Class Form1
         btnUppdate.Text = "Update"
         btnUppdate.UseVisualStyleBackColor = True
         AddHandler btnUppdate.Click, AddressOf Me.btnUppdate_Click
+        '
+        'btnDelete2
+        '
+        Me.btnDelete2.Location = New System.Drawing.Point(7, 91)
+        Me.btnDelete2.Name = "btnDelete2"
+        Me.btnDelete2.Size = New System.Drawing.Size(75, 23)
+        Me.btnDelete2.TabIndex = 3
+        Me.btnDelete2.Text = "Delete"
+        Me.btnDelete2.UseVisualStyleBackColor = True
         '
         'Form1
         '
@@ -148,4 +159,5 @@ Partial Class Form1
     Friend WithEvents btnGetAll As Button
     Friend WithEvents grpTaskService As GroupBox
     Friend WithEvents grpUserService As GroupBox
+    Friend WithEvents btnDelete2 As Button
 End Class

@@ -86,7 +86,7 @@ Public Class Form1
     Private Sub btnUppdate_Click(sender As Object, e As EventArgs)
         Dim userDTO As UserDTO = UserDTO.OnUpdate(24, "bruci", "", "senha")
 
-        Dim result = _userService.UpdateUser(userDTO)
+        Dim result = _userService.Update(userDTO)
 
         If result.Success Then
             MessageBox.Show("Usuário atualizado com sucesso")
@@ -97,5 +97,9 @@ Public Class Form1
             Next
             MessageBox.Show(message)
         End If
+    End Sub
+
+    Private Sub btnDelete2_Click(sender As Object, e As EventArgs) Handles btnDelete2.Click
+        _userService.Delete(24)
     End Sub
 End Class

@@ -19,7 +19,7 @@ Namespace TaskManager.Services
 
 
         End Sub
-        Public Function CreateUser(userDto As UserDTO) As ResultViewModel(Of UserDTO) Implements IUserService.CreateUser
+        Public Function Create(userDto As UserDTO) As ResultViewModel(Of UserDTO) Implements IUserService.Create
             Dim result = _validator.Validate(userDto)
             If result.IsValid Then
                 Dim user = New User(userDto.Name, userDto.Password)
@@ -31,7 +31,7 @@ Namespace TaskManager.Services
 
         End Function
 
-        Public Function UpdateUser(userDTO As UserDTO) As ResultViewModel(Of UserDTO) Implements IUserService.UpdateUser
+        Public Function Update(userDTO As UserDTO) As ResultViewModel(Of UserDTO) Implements IUserService.Update
 
             Dim result = _validator.Validate(userDTO)
             If Not result.IsValid Then
@@ -46,15 +46,15 @@ Namespace TaskManager.Services
             Return New ResultViewModel(Of UserDTO)("Não foi possivel atualizar o registro")
         End Function
 
-        Public Sub DeleteUser(id As Integer) Implements IUserService.DeleteUser
-            Throw New NotImplementedException()
-        End Sub
+        Public Function Delete(id As Integer) As Boolean Implements IUserService.Delete
+            Return _repository.Delete(id)
+        End Function
 
-        Public Function GetUser(id As Integer) As User Implements IUserService.GetUser
+        Public Function GetById(id As Integer) As User Implements IUserService.GetById
             Throw New NotImplementedException()
         End Function
 
-        Public Function GetUsers() As IEnumerable Implements IUserService.GetUsers
+        Public Function GetAll() As IEnumerable Implements IUserService.GetAll
             Throw New NotImplementedException()
         End Function
 
