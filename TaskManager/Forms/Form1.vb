@@ -28,7 +28,7 @@ Public Class Form1
         If result.Success Then
             MessageBox.Show("Usuário criado com sucesso")
         Else
-            Dim message As String
+            Dim message As String = String.Empty
             For Each item In result.Erros
                 message += item + vbCrLf
             Next
@@ -81,5 +81,21 @@ Public Class Form1
 
         MessageBox.Show(message)
 
+    End Sub
+
+    Private Sub btnUppdate_Click(sender As Object, e As EventArgs)
+        Dim userDTO As UserDTO = UserDTO.OnUpdate(24, "bruci", "", "senha")
+
+        Dim result = _userService.UpdateUser(userDTO)
+
+        If result.Success Then
+            MessageBox.Show("Usuário atualizado com sucesso")
+        Else
+            Dim message As String = String.Empty
+            For Each item In result.Erros
+                message += item + vbCrLf
+            Next
+            MessageBox.Show(message)
+        End If
     End Sub
 End Class

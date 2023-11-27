@@ -34,13 +34,16 @@ Namespace TaskManager.Services
         Public Function UpdateUser(userDTO As UserDTO) As ResultViewModel(Of UserDTO) Implements IUserService.UpdateUser
 
             Dim result = _validator.Validate(userDTO)
-            If result.IsValid Then
-                Dim user = New User(userDTO.Name, userDTO.Password)
-                _repository.Update(user)
-                Return New ResultViewModel(Of UserDTO)(userDTO)
-            Else
+            If Not result.IsValid Then
                 Return New ResultViewModel(Of UserDTO)(result.ToListErros)
             End If
+
+            Dim user = New User(userDTO.Id, userDTO.Name, userDTO.Password)
+            If _repository.Update(user) > 0 Then
+                Return New ResultViewModel(Of UserDTO)(userDTO)
+            End If
+
+            Return New ResultViewModel(Of UserDTO)("Não foi possivel atualizar o registro")
         End Function
 
         Public Sub DeleteUser(id As Integer) Implements IUserService.DeleteUser

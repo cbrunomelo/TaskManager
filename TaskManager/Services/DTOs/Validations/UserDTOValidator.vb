@@ -26,7 +26,8 @@ Public Class UserDTOValidator
         RuleFor(Function(x) x.Password).Matches("^[a-zA-Z0-9\s]*$").WithMessage("A senha deve conter apenas letras, números e espaços.") _
             .When(Function(x) Not String.IsNullOrEmpty(x.Password))
 
-        RuleFor(Function(x) x.Password).NotEmpty().WithMessage("A senha é obrigatória.")
+        RuleFor(Function(x) x.Password).NotEmpty().WithMessage("A senha é obrigatória.") _
+            .When(Function(x) x.UseCase = EUseCase.NovoRegistro Or (x.UseCase = EUseCase.EditarRegistro And Not String.IsNullOrEmpty(x.Password)))
 
         'for RepeatPassword
 

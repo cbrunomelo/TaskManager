@@ -22,6 +22,7 @@ Partial Class Form1
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim btnUppdate As System.Windows.Forms.Button
         Me.Button1 = New System.Windows.Forms.Button()
         Me.btnCreateUser = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
@@ -30,6 +31,7 @@ Partial Class Form1
         Me.btnGetAll = New System.Windows.Forms.Button()
         Me.grpTaskService = New System.Windows.Forms.GroupBox()
         Me.grpUserService = New System.Windows.Forms.GroupBox()
+        btnUppdate = New System.Windows.Forms.Button()
         Me.grpTaskService.SuspendLayout()
         Me.grpUserService.SuspendLayout()
         Me.SuspendLayout()
@@ -104,6 +106,7 @@ Partial Class Form1
         '
         'grpUserService
         '
+        Me.grpUserService.Controls.Add(btnUppdate)
         Me.grpUserService.Controls.Add(Me.btnCreateUser)
         Me.grpUserService.Location = New System.Drawing.Point(164, 60)
         Me.grpUserService.Name = "grpUserService"
@@ -111,6 +114,16 @@ Partial Class Form1
         Me.grpUserService.TabIndex = 7
         Me.grpUserService.TabStop = False
         Me.grpUserService.Text = "UserService"
+        '
+        'btnUppdate
+        '
+        btnUppdate.Location = New System.Drawing.Point(7, 64)
+        btnUppdate.Name = "btnUppdate"
+        btnUppdate.Size = New System.Drawing.Size(75, 23)
+        btnUppdate.TabIndex = 2
+        btnUppdate.Text = "Update"
+        btnUppdate.UseVisualStyleBackColor = True
+        AddHandler btnUppdate.Click, AddressOf Me.btnUppdate_Click
         '
         'Form1
         '

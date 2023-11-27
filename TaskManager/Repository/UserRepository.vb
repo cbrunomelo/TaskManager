@@ -24,9 +24,19 @@ Namespace TaskManager.Repository
             DALFactory.DALFactory.ExecutarComando(command, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
         End Sub
 
-        Public Sub Update(entity As Entitys.User) Implements IRepository(Of Entitys.User).Update
-            Throw New NotImplementedException()
-        End Sub
+        Public Function Update(entity As Entitys.User) As Integer Implements IRepository(Of Entitys.User).Update
+            Dim Command As String = "Update Users set NAME = @VAL1, PasswordHash = @VAL2 where id = @VAL3"
+            Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.String, entity.Name))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL2", DbType.String, entity.PasswordHash))
+            paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL3", DbType.Int32, entity.Id))
+
+
+            Return DALFactory.DALFactory.ExecutarComando(Command, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
+
+
+
+        End Function
 
         Public Function Delete(id As Integer) As Boolean Implements IRepository(Of Entitys.User).Delete
             Throw New NotImplementedException()
