@@ -1,14 +1,17 @@
 ﻿Imports TaskManager.TaskManager.Services
+Imports TaskManager.TaskManager.Services.Contracts
 Imports TaskManager.TaskManager.Services.DTOs
 Imports TaskManager.TaskManager.Services.Entitys.Enums
 
 Public Class Form1
-    Private _taskService As TaskService
+    Private _taskService As ITaskService
+    Private _userService As IUserService
     Sub New()
 
         InitializeComponent()
 
         _taskService = New TaskService()
+        _userService = New UserService()
 
 
     End Sub
@@ -19,8 +22,18 @@ Public Class Form1
     End Sub
 
     Private Sub btnCreateUser_Click(sender As Object, e As EventArgs) Handles btnCreateUser.Click
-        Dim userService As UserService = New UserService()
-        userService.CreateUser("Batman", "senha")
+
+        Dim userDTO As UserDTO = UserDTO.OnCreate("bruce wayne", "senha", "senha")
+        Dim result = _userService.CreateUser(userDTO)
+        If result.Success Then
+            MessageBox.Show("Usuário criado com sucesso")
+        Else
+            Dim message As String = String.Empty
+            For Each item In result.Erros
+                message += item + vbCrLf
+            Next
+            MessageBox.Show(message)
+        End If
 
 
     End Sub
@@ -68,5 +81,25 @@ Public Class Form1
 
         MessageBox.Show(message)
 
+    End Sub
+
+    Private Sub btnUppdate_Click(sender As Object, e As EventArgs)
+        Dim userDTO As UserDTO = UserDTO.OnUpdate(24, "bruci", "", "senha")
+
+        Dim result = _userService.Update(userDTO)
+
+        If result.Success Then
+            MessageBox.Show("Usuário atualizado com sucesso")
+        Else
+            Dim message As String = String.Empty
+            For Each item In result.Erros
+                message += item + vbCrLf
+            Next
+            MessageBox.Show(message)
+        End If
+    End Sub
+
+    Private Sub btnDelete2_Click(sender As Object, e As EventArgs) Handles btnDelete2.Click
+        _userService.Delete(24)
     End Sub
 End Class

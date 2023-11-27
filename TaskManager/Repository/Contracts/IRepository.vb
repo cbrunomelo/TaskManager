@@ -3,7 +3,7 @@
         Function GetAll(userId As Integer) As IEnumerable(Of T)
         Function GetById(id As Integer) As T
         Sub Add(entity As T)
-        Sub Update(entity As T)
+        Function Update(entity As T) As Integer
         Function Delete(id As Integer) As Boolean
     End Interface
 

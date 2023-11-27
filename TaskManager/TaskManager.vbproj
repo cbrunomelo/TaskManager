@@ -125,6 +125,7 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="Repository\Contracts\IRepository.vb" />
+    <Compile Include="Repository\Contracts\userRepository.vb" />
     <Compile Include="Repository\DALFactory\ConexaoDB.vb" />
     <Compile Include="Repository\DALFactory\DALFactory.vb" />
     <Compile Include="Repository\DALFactory\ETipoAcesso.vb" />
@@ -133,9 +134,12 @@
     <Compile Include="Repository\UserRepository.vb" />
     <Compile Include="Services\Contracts\ITaskService.vb" />
     <Compile Include="Services\Contracts\IUserService.vb" />
+    <Compile Include="Services\DTOs\Enum\EUseCase.vb" />
     <Compile Include="Services\DTOs\ResultViewModel.vb" />
     <Compile Include="Services\DTOs\TaskDTO.vb" />
+    <Compile Include="Services\DTOs\UserDTO.vb" />
     <Compile Include="Services\DTOs\Validations\TaskDTOValidator.vb" />
+    <Compile Include="Services\DTOs\Validations\UserDTOValidator.vb" />
     <Compile Include="Services\Entitys\Entity.vb" />
     <Compile Include="Services\Entitys\Enums\EStatus.vb" />
     <Compile Include="Services\Entitys\Task.vb" />

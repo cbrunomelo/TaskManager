@@ -5,7 +5,7 @@ Imports TaskManager.TaskManager.Repository.DALFactory
 
 Namespace TaskManager.Repository
     Public Class TaskRepository
-        Implements IRepository(Of TaskManager.Services.Entitys.Task)
+        Implements IRepository(Of Task)
 
         Sub New()
             ConexaoDB.getAcesso(ETipoAcesso.SQLite)
@@ -28,7 +28,7 @@ Namespace TaskManager.Repository
 
         End Sub
 
-        Public Sub Update(entity As Task) Implements IRepository(Of Task).Update
+        Public Function Update(entity As Task) As Integer Implements IRepository(Of Task).Update
             Dim comand As String = "UPDATE Tasks SET TITLE = @VAL1, LASTUPDATE = @VAL2, DUEDATE = @VAL3, STATUS = @VAL4 WHERE ID = @VAL5"
             Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
             paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.String, entity.Title))
@@ -37,8 +37,8 @@ Namespace TaskManager.Repository
             paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL4", DbType.String, entity.Status.ToString))
             paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL5", DbType.Int32, entity.Id))
 
-            DALFactory.DALFactory.ExecutarComando(comand, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
-        End Sub
+            Return DALFactory.DALFactory.ExecutarComando(comand, CommandType.Text, paramtros, TipoDeComando.ExecuteNonQuery)
+        End Function
 
         Public Function Delete(id As Integer) As Boolean Implements IRepository(Of Task).Delete
             Dim comando As String = "DELETE FROM Tasks WHERE ID = @VAL1"

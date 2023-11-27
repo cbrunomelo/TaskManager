@@ -1,16 +1,19 @@
-﻿Imports TaskManager.TaskManager.Services.Entitys
+﻿Imports TaskManager.TaskManager.Services.DTOs
+Imports TaskManager.TaskManager.Services.Entitys
 
 Namespace TaskManager.Services.Contracts
     Public Interface IUserService
 
-        Sub CreateUser(name As String, password As String)
+        Function Create(userDto As UserDTO) As ResultViewModel(Of UserDTO)
 
-        Sub UpdateUser(id As Integer, name As String, password As String)
+        Function Update(userDTO As UserDTO) As ResultViewModel(Of UserDTO)
 
-        Sub DeleteUser(id As Integer)
-        Function GetUser(id As Integer) As User
+        Function Delete(id As Integer) As Boolean
+        Function GetById(id As Integer) As User
 
-        Function GetUsers() As IEnumerable
+        Function GetAll() As IEnumerable
+
+        Function IsNameInUse(name As String) As Boolean
 
     End Interface
 
