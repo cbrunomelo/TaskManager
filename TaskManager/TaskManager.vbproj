@@ -147,6 +147,7 @@
     <Compile Include="Services\Extension\ValidationResultExtension.vb" />
     <Compile Include="Services\TaskService.vb" />
     <Compile Include="Services\UserService.vb" />
+    <Compile Include="Services\Utility\HashUtility.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Forms\Form1.resx">
