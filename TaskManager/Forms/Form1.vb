@@ -24,7 +24,7 @@ Public Class Form1
     Private Sub btnCreateUser_Click(sender As Object, e As EventArgs) Handles btnCreateUser.Click
 
         Dim userDTO As UserDTO = UserDTO.OnCreate("bruce wayne", "senha", "senha")
-        Dim result = _userService.CreateUser(userDTO)
+        Dim result = _userService.Create(userDTO)
         If result.Success Then
             MessageBox.Show("Usuário criado com sucesso")
         Else
