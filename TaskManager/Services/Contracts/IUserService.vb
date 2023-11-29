@@ -15,6 +15,8 @@ Namespace TaskManager.Services.Contracts
 
         Function IsNameInUse(name As String) As Boolean
 
+        Function Login(userDto As UserDTO) As ResultViewModel(Of UserDTO)
+
     End Interface
 
 

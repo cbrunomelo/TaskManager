@@ -26,6 +26,12 @@
             Me.RepeatPassword = repeatPassword
         End Sub
 
+        Private Sub New(name As String, password As String)
+            Me.Name = name
+            Me.Password = password
+
+        End Sub
+
         Public Shared Function OnUpdate(id As Integer, name As String, password As String, repeatPassword As String) As UserDTO
             Return New UserDTO(id, name, password, repeatPassword) With {
                             ._useCase = EUseCase.EditarRegistro
@@ -38,6 +44,12 @@
             }
 
 
+        End Function
+
+        Public Shared Function OnLogin(name As String, password As String) As UserDTO
+            Return New UserDTO(name, password) With {
+                ._useCase = EUseCase.Login
+            }
         End Function
 
 

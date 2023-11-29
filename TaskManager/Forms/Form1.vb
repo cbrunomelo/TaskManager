@@ -102,4 +102,18 @@ Public Class Form1
     Private Sub btnDelete2_Click(sender As Object, e As EventArgs) Handles btnDelete2.Click
         _userService.Delete(24)
     End Sub
+
+    Private Sub btnLogin_Click(sender As Object, e As EventArgs) Handles btnLogin.Click
+        Dim userDto As UserDTO = UserDTO.OnLogin("Clark frio", "senha errada")
+        Dim result = _userService.Login(userDto)
+        If result.Success Then
+            MessageBox.Show("Logado com sucesso")
+        Else
+            Dim message As String = String.Empty
+            For Each item In result.Erros
+                message += item + vbCrLf
+            Next
+            MessageBox.Show(message)
+        End If
+    End Sub
 End Class

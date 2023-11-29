@@ -8,13 +8,39 @@ Namespace TaskManager.Services.Entitys
     Public NotInheritable Class User
         Inherits Entity
 
-        ReadOnly Property Id As Integer
+        Private _id As Integer
+        Property Id As Integer
+            Get
+                Return _id
+            End Get
+            Private Set(value As Integer)
+                _id = value
+            End Set
+        End Property
 
-        ReadOnly Property Name As String
+        Private _name As String
+        Property Name As String
+            Get
+                Return _name
+            End Get
+            Private Set(value As String)
+                _name = value
+            End Set
+        End Property
 
-        ReadOnly Property PasswordHash As String
+        Private _passwordHash As String
+        Property PasswordHash As String
+            Get
+                Return _passwordHash
+            End Get
+            Private Set(value As String)
+                _passwordHash = value
+            End Set
+        End Property
 
+        Sub New()
 
+        End Sub
         Sub New(id As Integer, name As String, passwordHash As String)
             Me.Id = id
             Me.Name = name
@@ -26,7 +52,11 @@ Namespace TaskManager.Services.Entitys
             Me.PasswordHash = HashUtility.HashPassword(passwordHash)
         End Sub
 
-
+        Public Sub LoadFromDb(id As Integer, name As String, passwordHash As String)
+            Me.Id = id
+            Me.Name = name
+            Me.PasswordHash = passwordHash
+        End Sub
 
 
 

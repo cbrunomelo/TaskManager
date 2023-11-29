@@ -31,11 +31,22 @@ Partial Class Form1
         Me.btnGetAll = New System.Windows.Forms.Button()
         Me.grpTaskService = New System.Windows.Forms.GroupBox()
         Me.grpUserService = New System.Windows.Forms.GroupBox()
+        Me.btnLogin = New System.Windows.Forms.Button()
         Me.btnDelete2 = New System.Windows.Forms.Button()
         btnUppdate = New System.Windows.Forms.Button()
         Me.grpTaskService.SuspendLayout()
         Me.grpUserService.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'btnUppdate
+        '
+        btnUppdate.Location = New System.Drawing.Point(7, 64)
+        btnUppdate.Name = "btnUppdate"
+        btnUppdate.Size = New System.Drawing.Size(75, 23)
+        btnUppdate.TabIndex = 2
+        btnUppdate.Text = "Update"
+        btnUppdate.UseVisualStyleBackColor = True
+        AddHandler btnUppdate.Click, AddressOf Me.btnUppdate_Click
         '
         'Button1
         '
@@ -107,6 +118,7 @@ Partial Class Form1
         '
         'grpUserService
         '
+        Me.grpUserService.Controls.Add(Me.btnLogin)
         Me.grpUserService.Controls.Add(Me.btnDelete2)
         Me.grpUserService.Controls.Add(btnUppdate)
         Me.grpUserService.Controls.Add(Me.btnCreateUser)
@@ -117,15 +129,14 @@ Partial Class Form1
         Me.grpUserService.TabStop = False
         Me.grpUserService.Text = "UserService"
         '
-        'btnUppdate
+        'btnLogin
         '
-        btnUppdate.Location = New System.Drawing.Point(7, 64)
-        btnUppdate.Name = "btnUppdate"
-        btnUppdate.Size = New System.Drawing.Size(75, 23)
-        btnUppdate.TabIndex = 2
-        btnUppdate.Text = "Update"
-        btnUppdate.UseVisualStyleBackColor = True
-        AddHandler btnUppdate.Click, AddressOf Me.btnUppdate_Click
+        Me.btnLogin.Location = New System.Drawing.Point(7, 120)
+        Me.btnLogin.Name = "btnLogin"
+        Me.btnLogin.Size = New System.Drawing.Size(75, 23)
+        Me.btnLogin.TabIndex = 8
+        Me.btnLogin.Text = "Login"
+        Me.btnLogin.UseVisualStyleBackColor = True
         '
         'btnDelete2
         '
@@ -160,4 +171,5 @@ Partial Class Form1
     Friend WithEvents grpTaskService As GroupBox
     Friend WithEvents grpUserService As GroupBox
     Friend WithEvents btnDelete2 As Button
+    Friend WithEvents btnLogin As Button
 End Class
