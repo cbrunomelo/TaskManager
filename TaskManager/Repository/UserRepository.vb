@@ -61,8 +61,12 @@ Namespace TaskManager.Repository
             Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
             paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.String, name))
             Dim reader = DALFactory.DALFactory.ExecutarComando(command, CommandType.Text, paramtros, TipoDeComando.ExecuteReader)
-            Dim user As Entitys.User = New Entitys.User()
+            Dim user As Entitys.User
             While reader.read()
+                user = New Entitys.User()
+                Dim testeId = reader("Id")
+                Dim testeName = reader("Name")
+                Dim testePassword = reader("PasswordHash")
                 user.LoadFromDb(reader("Id"), reader("Name"), reader("PasswordHash"))
             End While
             Return user

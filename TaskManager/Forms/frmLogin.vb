@@ -26,4 +26,10 @@ Public Class frmLogin
         End If
 
     End Sub
+
+    Private Sub btnCriar_Click(sender As Object, e As EventArgs) Handles btnCriar.Click
+        Dim form As New frmCadastrarUsuario(Me)
+        form.Show()
+        Me.Hide()
+    End Sub
 End Class
