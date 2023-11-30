@@ -56,18 +56,20 @@ Namespace TaskManager.Repository
             Throw New NotImplementedException()
         End Function
 
-        Public Function GetByName(name As String) As Integer? Implements IUserrepository.GetByName
-            Dim command = "Select id from USERS where NAME = @VAL1"
+        Public Function GetByName(name As String) As Entitys.User Implements IUserrepository.GetByName
+            Dim command = "Select id, Name, PasswordHash from USERS where NAME = @VAL1"
             Dim paramtros As List(Of DbParameter) = New List(Of DbParameter)
             paramtros.Add(DALFactory.DALFactory.CriarParametro("@VAL1", DbType.String, name))
-            Dim result = DALFactory.DALFactory.ExecutarComando(command, CommandType.Text, paramtros, TipoDeComando.ExecuteScalar)
-            If result Is Nothing Then
-                Return Nothing
-            End If
-
-            Return Convert.ToInt32(result)
-
-
+            Dim reader = DALFactory.DALFactory.ExecutarComando(command, CommandType.Text, paramtros, TipoDeComando.ExecuteReader)
+            Dim user As Entitys.User
+            While reader.read()
+                user = New Entitys.User()
+                Dim testeId = reader("Id")
+                Dim testeName = reader("Name")
+                Dim testePassword = reader("PasswordHash")
+                user.LoadFromDb(reader("Id"), reader("Name"), reader("PasswordHash"))
+            End While
+            Return user
         End Function
     End Class
 

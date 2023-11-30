@@ -4,6 +4,7 @@ Imports TaskManager.TaskManager.Repository.DALFactory
 Imports TaskManager.TaskManager.Services.Contracts
 Imports TaskManager.TaskManager.Services.DTOs
 Imports TaskManager.TaskManager.Services.Entitys
+Imports TaskManager.TaskManager.Services.Utility
 Imports TaskManager.TaskManager.TaskManager.Repository.Contracts
 
 Namespace TaskManager.Services
@@ -58,6 +59,24 @@ Namespace TaskManager.Services
             Throw New NotImplementedException()
         End Function
 
+        Public Function Login(userDto As UserDTO) As ResultViewModel(Of UserDTO) Implements IUserService.Login
+            Dim result = _validator.Validate(userDto)
+            If Not result.IsValid Then
+                Return New ResultViewModel(Of UserDTO)(result.ToListErros)
+            End If
+
+            Dim userfromDb = _repository.GetByName(userDto.Name)
+            If userfromDb Is Nothing Then
+                Return New ResultViewModel(Of UserDTO)("Usuário não encontrado")
+            End If
+
+            If Not HashUtility.verifyHash(userDto.Password, userfromDb.PasswordHash) Then
+                Return New ResultViewModel(Of UserDTO)("Senha incorreta")
+            End If
+
+            Return New ResultViewModel(Of UserDTO)(userDto)
+
+        End Function
 
         Private Function IsNameInUse(name As String) As Boolean Implements IUserService.IsNameInUse
             Dim result = _repository.GetByName(name)

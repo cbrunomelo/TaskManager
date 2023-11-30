@@ -19,7 +19,8 @@ Public Class UserDTOValidator
             .When(Function(x) Not String.IsNullOrEmpty(x.Name))
 
         'if the name alrdy in use
-        RuleFor(Function(x) x.Name).Must(Function(x) Not _userService.IsNameInUse(x)).WithMessage("O nome já está em uso.").When(Function(x) Not String.IsNullOrEmpty(x.Name))
+        RuleFor(Function(x) x.Name).Must(Function(x) Not _userService.IsNameInUse(x)).WithMessage("O nome já está em uso.").When(Function(x) Not String.IsNullOrEmpty(x.Name)) _
+.When(Function(x) x.UseCase = EUseCase.NovoRegistro Or x.UseCase = EUseCase.EditarRegistro)
 
 
         'for Password

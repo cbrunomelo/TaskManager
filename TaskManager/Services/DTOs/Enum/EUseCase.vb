@@ -2,6 +2,7 @@
     NovoRegistro
     EditarRegistro
     ExcluirRegistro
+    Login
 
 
 End Enum
