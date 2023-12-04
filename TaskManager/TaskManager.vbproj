@@ -102,23 +102,22 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Forms\Form1.vb">
+    <Compile Include="Forms\Home\frmHome.Designer.vb">
+      <DependentUpon>frmHome.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Home\frmHome.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\frmCadastrarUsuario.Designer.vb">
+    <Compile Include="Forms\Login\frmCadastrarUsuario.Designer.vb">
       <DependentUpon>frmCadastrarUsuario.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmCadastrarUsuario.vb">
+    <Compile Include="Forms\Login\frmCadastrarUsuario.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\frmLogin.Designer.vb">
+    <Compile Include="Forms\Login\frmLogin.Designer.vb">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </Compile>
-    <Compile Include="Forms\frmLogin.vb">
+    <Compile Include="Forms\Login\frmLogin.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -163,13 +162,13 @@
     <Compile Include="Services\Utility\HashUtility.vb" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Forms\Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="Forms\Home\frmHome.resx">
+      <DependentUpon>frmHome.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmCadastrarUsuario.resx">
+    <EmbeddedResource Include="Forms\Login\frmCadastrarUsuario.resx">
       <DependentUpon>frmCadastrarUsuario.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\frmLogin.resx">
+    <EmbeddedResource Include="Forms\Login\frmLogin.resx">
       <DependentUpon>frmLogin.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
