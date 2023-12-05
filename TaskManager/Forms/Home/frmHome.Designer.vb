@@ -22,22 +22,22 @@ Partial Class frmHome
     'Não o modifique usando o editor de códigos.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.DataGridView1 = New System.Windows.Forms.DataGridView()
+        Me.dgvTask = New System.Windows.Forms.DataGridView()
         Me.lbltTrefas = New System.Windows.Forms.Label()
         Me.lblBoaVindas = New System.Windows.Forms.Label()
         Me.btnNova = New System.Windows.Forms.Button()
         Me.btnAvancarStatus = New System.Windows.Forms.Button()
         Me.btnExcluir = New System.Windows.Forms.Button()
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.dgvTask, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'DataGridView1
+        'dgvTask
         '
-        Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Location = New System.Drawing.Point(4, 189)
-        Me.DataGridView1.Name = "DataGridView1"
-        Me.DataGridView1.Size = New System.Drawing.Size(309, 175)
-        Me.DataGridView1.TabIndex = 0
+        Me.dgvTask.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.dgvTask.Location = New System.Drawing.Point(4, 189)
+        Me.dgvTask.Name = "dgvTask"
+        Me.dgvTask.Size = New System.Drawing.Size(309, 175)
+        Me.dgvTask.TabIndex = 0
         '
         'lbltTrefas
         '
@@ -94,19 +94,19 @@ Partial Class frmHome
         Me.Controls.Add(Me.btnNova)
         Me.Controls.Add(Me.lblBoaVindas)
         Me.Controls.Add(Me.lbltTrefas)
-        Me.Controls.Add(Me.DataGridView1)
+        Me.Controls.Add(Me.dgvTask)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle
         Me.MaximizeBox = False
         Me.Name = "frmHome"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Home"
-        CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.dgvTask, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents DataGridView1 As DataGridView
+    Friend WithEvents dgvTask As DataGridView
     Friend WithEvents lbltTrefas As Label
     Friend WithEvents lblBoaVindas As Label
     Friend WithEvents btnNova As Button

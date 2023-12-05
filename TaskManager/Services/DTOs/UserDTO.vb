@@ -26,6 +26,11 @@
             Me.RepeatPassword = repeatPassword
         End Sub
 
+        Private Sub New(id As Integer, name As String)
+            Me.Id = id
+            Me.Name = name
+        End Sub
+
         Private Sub New(name As String, password As String)
             Me.Name = name
             Me.Password = password
@@ -52,8 +57,11 @@
             }
         End Function
 
+        Public Shared Function LoadUserFromDb(id As Integer, name As String) As UserDTO
 
+            Return New UserDTO(id, name)
 
+        End Function
 
 
     End Class
