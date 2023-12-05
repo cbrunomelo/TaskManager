@@ -74,7 +74,7 @@ Namespace TaskManager.Services
                 Return New ResultViewModel(Of UserDTO)("Senha incorreta")
             End If
 
-            Return New ResultViewModel(Of UserDTO)(userDto)
+            Return New ResultViewModel(Of UserDTO)(UserDTO.LoadUserFromDb(userfromDb.Id, userfromDb.Name))
 
         End Function
 
